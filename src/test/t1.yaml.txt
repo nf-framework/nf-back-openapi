@@ -1,0 +1,48 @@
+paths:
+  /r1:
+    post:
+      summary: post r1
+      description: post r1
+      requestBody:
+        $ref: '#/components/requestBodies/r1'
+      responses:
+        200:
+          $ref: '#/components/responses/r1'
+        default:
+          $ref: '#/components/responses/r1'
+    get:
+      summary: get r1
+      description: get r1
+      parameters:
+        id:
+          in: query
+          name: client id
+          description: client id
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          $ref: '#/components/responses/r1'
+        default:
+          $ref: '#/components/responses/r1'
+components:
+  responses:
+    r1:
+      description: response r
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              uid:
+                type: string
+                format: uuid
+  requestBodies:
+    r1:
+      description: body r1
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Dto1'

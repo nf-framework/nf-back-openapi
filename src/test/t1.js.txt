@@ -1,0 +1,126 @@
+const router = {};
+/**
+ * @typedef {Object} DataObj
+ * @property {string} dat
+ * @property {number} num
+ * @property {boolean} bool
+ * @property {string[]} arr1
+ * @property {Array<string>} arr2
+ * @propertyOpenapi {dat} format date
+ * @propertyOpenapi {dat} example 01.01.1990
+ */
+
+/**
+ * @typedef {Object} Dto1
+ * @property {string} dat
+ * @property {DataObj} data
+ * @propertyOpenapi {dat} format date
+ * @propertyOpenapi {dat} example 01.01.1990
+ */
+
+/**
+ * @typedef {Object} Dto2
+ * @property {string} dat
+ * @property {Array<DataObj>} dataArr
+ */
+
+/**
+ * @openapi
+ * components:
+ *   schemas:
+ *     Dto3:
+ *       description: 'dto3'
+ *       type: object
+ *       properties:
+ *         dat:
+ *           type: string
+ *           format: date
+ *           example: '01.01.1900'
+ *         arr:
+ *           type: array
+ *           items:
+ *             $ref: '#/components/schemas/DataObj'
+ */
+
+function r2() {
+}
+
+/**
+ * @openapi
+ * paths:
+ *   /r2:
+ *     post:
+ *       summary: post r2
+ *       description: post r2
+ *       requestBody:
+ *         $ref: '#/components/requestBodies/r2'
+ *       responses:
+ *         default:
+ *           $ref: '#/components/responses/r2'
+ * components:
+ *   responses:
+ *     r2:
+ *       description: response r2
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               uid:
+ *                 type: string
+ *                 format: uuid
+ *   requestBodies:
+ *     r1:
+ *       description: body r1
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Dto2'
+ */
+router.r2 = r2;
+
+function r3() {
+}
+
+/**
+ * @openapi
+ * paths:
+ *   /r3:
+ *     post:
+ *       summary: post r3
+ *       description: post r3
+ *       requestBody:
+ *         $ref: '#/components/requestBodies/r3'
+ *       responses:
+ *         default:
+ *           $ref: '#/components/responses/r2'
+ * components:
+ *   requestBodies:
+ *     r3:
+ *       description: body r3
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Dto3'
+ */
+router.r3 = r3;
+
+function r4() {
+}
+
+/**
+ * @openapi
+ * paths:
+ *   /r4:
+ *     post:
+ *       summary: post r4
+ *       requestBody:
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/NfcExSystemMapping'
+ *       responses:
+ *         default:
+ *           $ref: '#/components/responses/r2'
+ */
+router.r4 = r4;

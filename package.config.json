@@ -1,0 +1,36 @@
+{
+    "@nfjs/back-openapi": {
+        "denySwagger": {
+            "type": "Boolean",
+            "description": "Отключить автоматический сбор openapi документа",
+            "default": false
+        },
+        "denyRouteErrors": {
+            "type": "Boolean",
+            "description": "Отключить доступ к ошибкам при автоматическом сборе openapi документа",
+            "default": false
+        },
+        "route": {
+            "type": "String",
+            "description": "Относительный адрес, на котором будут доступны swagger, сам документ и ошибки сбора",
+            "default": "/nf-back-openapi"
+        },
+        "gather": {
+            "yamlPathPattern": {
+                "type": "String",
+                "description": "Паттерн для поиска yaml файлов",
+                "default": "**/*.yaml"
+            },
+            "jsdocPathPattern": {
+                "type": "String",
+                "description": "Паттерн для поиска файлов с jsdoc комментариями",
+                "default": "**/*.js"
+            },
+            "modelPathPattern": {
+                "type": "String",
+                "description": "Паттерн для поиска моделей бэкенда @nfjs/back-dbfw/model",
+                "default": "models/index.js"
+            }
+        }
+    }
+}
